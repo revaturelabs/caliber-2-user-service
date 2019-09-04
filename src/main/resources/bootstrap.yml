@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: user-service
+#  cloud:
+#    config:
+#      name: user-service
+#      discovery:
+#        service-id: config
+#        enabled: true
+
+server:
+  servlet-path: /user/*
+---
+spring:
+  profiles: local
+  datasource:
+    platform: h2
+    initialize: true
+  cloud:
+    config:
+      uri: http://localhost:8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+---
+spring:
+  profiles: dev
+  datasource:
+    initialize: false
+  cloud:
+    config:
+      discovery:
+        enabled: false 
+      uri: http://config.caliber-2-dev 
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+---               
+spring:
+  profiles: prod
