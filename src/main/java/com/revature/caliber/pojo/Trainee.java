@@ -2,6 +2,7 @@ package com.revature.caliber.pojo;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -286,5 +287,16 @@ public class Trainee implements Serializable {
 
 	public void setFlagTimestamp(Timestamp timestamp) {
 		this.flagNoteTimestamp = timestamp;
+	}
+
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", Trainee.class.getSimpleName() + "[", "]")
+						.add("traineeId=" + traineeId)
+						.add("name='" + name + "'")
+						.add("flagStatus=" + flagStatus)
+						.add("flagNotes='" + flagNotes + "'")
+						.add("flagNoteTimestamp=" + flagNoteTimestamp)
+						.toString();
 	}
 }

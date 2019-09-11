@@ -70,7 +70,7 @@ public class TraineeController {
 	@GetMapping(value="all/trainee", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Trainee>> findAllByBatch(
 			@RequestParam(required=true) Integer batch){
-		log.trace("in all/trainee: Looking for batch: {}", batch);
+		log.info("in all/trainee: Looking for batch: {}", batch);
 		List<Trainee> trainees = traineeService.findAllByBatch(batch);
 		return new ResponseEntity<>(trainees, HttpStatus.OK);
 	}
@@ -84,7 +84,7 @@ public class TraineeController {
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Trainee> createTrainee(@Valid @RequestBody TraineeDTO traineeDTO) {
 		Trainee trainee = traineeDTO.generateModel();
-		log.debug("Saving trainee: {}", trainee);
+		log.info("Saving trainee: {}", trainee);
 		traineeService.save(trainee);
 		return new ResponseEntity<>(trainee, HttpStatus.CREATED);
 	}
@@ -97,7 +97,7 @@ public class TraineeController {
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Trainee> updateTrainee(@Valid @RequestBody TraineeDTO traineeDTO) {
 		Trainee trainee = traineeDTO.generateModel();
-		log.debug("Updating trainee: {}", trainee);
+		log.info("Updating trainee: {}", trainee);
 		traineeService.update(trainee);
 		return new ResponseEntity<>(trainee, HttpStatus.ACCEPTED);
 	}	
