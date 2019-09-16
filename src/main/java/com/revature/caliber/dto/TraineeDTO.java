@@ -2,11 +2,15 @@ package com.revature.caliber.dto;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.revature.caliber.json.TraineeDTODeserializer;
 import com.revature.caliber.pojo.Trainee;
 import com.revature.caliber.pojo.TraineeFlag;
 import com.revature.caliber.pojo.Trainer;
 import com.revature.caliber.pojo.TrainingStatus;
 
+@JsonDeserialize(using= TraineeDTODeserializer.class)
 public class TraineeDTO {
 	
 	private Integer traineeId;
@@ -179,6 +183,7 @@ public class TraineeDTO {
 		ret.setTechScreenScore(this.techScreenScore);
 		ret.setTraineeId(this.traineeId);
 		ret.setTrainingStatus(this.trainingStatus);
+		ret.setFlagStatus(this.flagStatus);
 		return ret;
 	}
 	
