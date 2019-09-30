@@ -1,6 +1,7 @@
 package com.revature.caliber.controller;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 
 import javax.validation.Valid;
@@ -122,5 +123,12 @@ public class TraineeController {
 	public ResponseEntity<Integer[][]> getAllTraineesForAllBatches(@RequestBody Integer[] batchIds){
 		Integer[][] toReturn = traineeService.createArrayOfTraineeCounts(batchIds);
 		return new ResponseEntity<>(toReturn, HttpStatus.OK);
+	}
+
+	@GetMapping(value="/trainee/{batchId}/count")
+	@Transactional(readOnly = true)
+	public ResponseEntity<Long> getTraineeCountByBatchId(@PathVariable("batchId") int batchId) {
+		Stream<Trainee> trainees = traineeService.findAllByBatch(batchId).stream();
+		return ResponseEntity.ok(trainees.count());
 	}
 }
