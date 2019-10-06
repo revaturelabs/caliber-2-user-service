@@ -78,8 +78,6 @@ public class TraineeController {
 	
 	/**
 	 * Handles post request for creating a trainee in a batch
-	 * @param trainee The trainee form object to make a trainee from 
-	 * @return The created trainee as well as an ok http status code
 	 */
 	@PostMapping(value="all/trainee/create", produces=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
@@ -91,8 +89,6 @@ public class TraineeController {
 	}
 	/**
 	 * Handles put request for creating a trainee in a batch
-	 * @param trainee The trainee to be updated
-	 * @return The updated Trainee object and an accepted http-status code
 	 */
 	@PutMapping(value="all/trainee/update", produces=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
@@ -130,5 +126,16 @@ public class TraineeController {
 	public ResponseEntity<Long> getTraineeCountByBatchId(@PathVariable("batchId") int batchId) {
 		Stream<Trainee> trainees = traineeService.findAllByBatch(batchId).stream();
 		return ResponseEntity.ok(trainees.count());
+	}
+
+	@PostMapping(value="/trainee/switch")
+	@Transactional
+	public ResponseEntity<TraineeDTO> switchBatchForTrainee(@RequestBody TraineeDTO traineeDto) {
+		try {
+			traineeService.switchBatch(traineeDto.getTraineeId(), traineeDto.getBatchId());
+			return ResponseEntity.ok(traineeDto);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
 	}
 }
