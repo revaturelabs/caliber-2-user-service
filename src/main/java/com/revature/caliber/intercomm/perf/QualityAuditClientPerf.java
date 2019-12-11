@@ -1,5 +1,6 @@
 package com.revature.caliber.intercomm.perf;
 
+import com.revature.caliber.intercomm.base.QualityAuditClient;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.context.annotation.Profile;
 
@@ -8,5 +9,5 @@ import org.springframework.context.annotation.Profile;
  */
 @Profile("perf")
 @FeignClient(name = "quality-audit-service", url = "http://qa.caliber-2-perf")
-public interface QualityAuditClientPerf {
+public interface QualityAuditClientPerf extends QualityAuditClient {
 }
