@@ -43,6 +43,8 @@ eureka:
 spring:
   profiles: prod
 ---
+qa:
+  client: ${QA_CLIENT}
 spring:
   profiles: perf
   datasource:

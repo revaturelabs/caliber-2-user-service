@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Profile;
  * @author William Gentry
  */
 @Profile("perf")
-@FeignClient(name = "quality-audit-service", url = "http://qa.caliber-2-perf")
+@FeignClient(name = "quality-audit-service", url = "${client.url}")
 public interface QualityAuditClientPerf extends QualityAuditClient {
 }
