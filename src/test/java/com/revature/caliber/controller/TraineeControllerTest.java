@@ -101,8 +101,8 @@ public class TraineeControllerTest {
 		MockitoAnnotations.initMocks(this);
 		RestAssured.port = port;
 		when(trainerService.findAllByBatch(1)).thenReturn(traineesInBatchOne);
-		when(trainerService.createArrayOfTraineeCounts(new Integer[] { 1, 2, 3, 7 }))
-				.thenReturn(new Integer[][] { { 1, 3 }, { 2, 2 }, { 3, 4 }, { 7, 1 } });
+		when(trainerService.createArrayOfTraineeCounts(new int[] { 1, 2, 3, 7 }))
+				.thenReturn(new int[][] { { 1, 3 }, { 2, 2 }, { 3, 4 }, { 7, 1 } });
 	}
 
 	@After
@@ -151,8 +151,8 @@ public class TraineeControllerTest {
 	@Test
 	public void testGetAllTraineesForAllBatches() {
 		assertArrayEquals("Testing getting counts of all trainees for all batches",
-				trainerController.getAllTraineesForAllBatches(new Integer[] { 1, 2, 3, 7 }).getBody(),
-				new Integer[][] { { 1, 3 }, { 2, 2 }, { 3, 4 }, { 7, 1 } });
+				trainerController.getAllTraineesForAllBatches(new int[] { 1, 2, 3, 7 }).getBody(),
+				new int[][] { { 1, 3 }, { 2, 2 }, { 3, 4 }, { 7, 1 } });
 	}
 
 }

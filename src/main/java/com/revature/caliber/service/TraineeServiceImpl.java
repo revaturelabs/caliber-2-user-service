@@ -33,7 +33,7 @@ public class TraineeServiceImpl implements TraineeService {
 	}
 
 	@Override
-	public List<Trainee> findAllByBatch(Integer batchId) {
+	public List<Trainee> findAllByBatch(int batchId) {
 		return dao.findByBatchId(batchId);
 	}
 
@@ -48,7 +48,7 @@ public class TraineeServiceImpl implements TraineeService {
 	}
 	
 	@Override
-	public void switchBatch(Integer traineeId, Integer batchId) {
+	public void switchBatch(int traineeId, int batchId) {
 		Trainee trainee = dao.findOne(traineeId);
 		if(trainee != null) {
 			trainee.setBatchId(batchId);
@@ -57,8 +57,8 @@ public class TraineeServiceImpl implements TraineeService {
 	}
 
 	@Override
-	public Integer[][] createArrayOfTraineeCounts(Integer[] batchIds) {
-		Integer[][] toReturn = new Integer[batchIds.length][2];
+	public int[][] createArrayOfTraineeCounts(int[] batchIds) {
+		int[][] toReturn = new int[batchIds.length][2];
 		for(int i = 0; i < batchIds.length; i++) {
 			toReturn[i][0] = batchIds[i];
 			toReturn[i][1] = Integer.parseInt("" + dao.countByBatchId(batchIds[i]));

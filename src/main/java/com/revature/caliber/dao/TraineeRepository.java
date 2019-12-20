@@ -19,13 +19,13 @@ public interface TraineeRepository extends JpaRepository<Trainee, Integer> {
 	 * @param batchId The id representing the batch to get all the trainees from
 	 * @return A list of all the trainees in the given batch
 	 */
-	public List<Trainee> findByBatchId(Integer batchId);
+	public List<Trainee> findByBatchId(int batchId);
 	
 	/**
 	 * Gets the number of trainees in a batch
 	 * @param batchId The id representing the batch to count the number of trainees for
 	 * @return The number of trainees in the given batch
 	 */
-	public Long countByBatchId(Integer batchId);
+	public Long countByBatchId(int batchId);
 
 }
