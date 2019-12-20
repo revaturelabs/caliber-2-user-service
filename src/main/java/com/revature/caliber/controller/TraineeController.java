@@ -1,6 +1,7 @@
 package com.revature.caliber.controller;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 
 import javax.validation.Valid;
@@ -77,27 +78,23 @@ public class TraineeController {
 	
 	/**
 	 * Handles post request for creating a trainee in a batch
-	 * @param trainee The trainee form object to make a trainee from 
-	 * @return The created trainee as well as an ok http status code
 	 */
 	@PostMapping(value="all/trainee/create", produces=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Trainee> createTrainee(@Valid @RequestBody TraineeDTO traineeDTO) {
 		Trainee trainee = traineeDTO.generateModel();
-		log.debug("Saving trainee: {}", trainee);
+		log.info("Saving trainee: {}", trainee);
 		traineeService.save(trainee);
 		return new ResponseEntity<>(trainee, HttpStatus.CREATED);
 	}
 	/**
 	 * Handles put request for creating a trainee in a batch
-	 * @param trainee The trainee to be updated
-	 * @return The updated Trainee object and an accepted http-status code
 	 */
 	@PutMapping(value="all/trainee/update", produces=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Trainee> updateTrainee(@Valid @RequestBody TraineeDTO traineeDTO) {
 		Trainee trainee = traineeDTO.generateModel();
-		log.debug("Updating trainee: {}", trainee);
+		log.info("Updating trainee: {}", trainee);
 		traineeService.update(trainee);
 		return new ResponseEntity<>(trainee, HttpStatus.ACCEPTED);
 	}	
@@ -122,5 +119,23 @@ public class TraineeController {
 	public ResponseEntity<int[][]> getAllTraineesForAllBatches(@RequestBody int[] batchIds){
 		int[][] toReturn = traineeService.createArrayOfTraineeCounts(batchIds);
 		return new ResponseEntity<>(toReturn, HttpStatus.OK);
+	}
+
+	@GetMapping(value="/trainee/{batchId}/count")
+	@Transactional(readOnly = true)
+	public ResponseEntity<Long> getTraineeCountByBatchId(@PathVariable("batchId") int batchId) {
+		Stream<Trainee> trainees = traineeService.findAllByBatch(batchId).stream();
+		return ResponseEntity.ok(trainees.count());
+	}
+
+	@PostMapping(value="/trainee/switch")
+	@Transactional
+	public ResponseEntity<TraineeDTO> switchBatchForTrainee(@RequestBody TraineeDTO traineeDto) {
+		try {
+			traineeService.switchBatch(traineeDto.getTraineeId(), traineeDto.getBatchId());
+			return ResponseEntity.ok(traineeDto);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().build();
+		}
 	}
 }

@@ -52,8 +52,8 @@ public class TraineeServiceImpl implements TraineeService {
 		Trainee trainee = dao.findOne(traineeId);
 		if(trainee != null) {
 			trainee.setBatchId(batchId);
+			dao.save(trainee);
 		}
-		dao.save(trainee);
 	}
 
 	@Override

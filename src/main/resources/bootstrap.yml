@@ -42,3 +42,19 @@ eureka:
 ---               
 spring:
   profiles: prod
+---
+qa:
+  client: ${QA_CLIENT}
+spring:
+  profiles: perf
+  datasource:
+    initialize: false
+  cloud:
+    config:
+      discovery:
+        enabled: false
+      uri: ${CONFIG_URL}
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false

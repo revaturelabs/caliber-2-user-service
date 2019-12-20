@@ -2,6 +2,7 @@ package com.revature.caliber.pojo;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.StringJoiner;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
