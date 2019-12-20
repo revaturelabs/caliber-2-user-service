@@ -9,12 +9,12 @@ import com.revature.caliber.pojo.TrainingStatus;
 
 public class TraineeDTO {
 	
-	private Integer traineeId;
+	private int traineeId;
 	private String resourceId;
 	private String name;
 	private String email;	
 	private TrainingStatus trainingStatus;
-	private Integer batchId;
+	private int batchId;
 	private String phoneNumber;
 	private String skypeId;
 	private String profileUrl;
@@ -30,10 +30,10 @@ public class TraineeDTO {
 	private Timestamp flagNoteTimestamp;
 	private Trainer flagNoteAuthor;
 	
-	public Integer getTraineeId() {
+	public int getTraineeId() {
 		return traineeId;
 	}
-	public void setTraineeId(Integer traineeId) {
+	public void setTraineeId(int traineeId) {
 		this.traineeId = traineeId;
 	}
 	public String getResourceId() {
@@ -60,10 +60,10 @@ public class TraineeDTO {
 	public void setTrainingStatus(TrainingStatus trainingStatus) {
 		this.trainingStatus = trainingStatus;
 	}
-	public Integer getBatchId() {
+	public int getBatchId() {
 		return batchId;
 	}
-	public void setBatchId(Integer batchId) {
+	public void setBatchId(int batchId) {
 		this.batchId = batchId;
 	}
 	public String getPhoneNumber() {

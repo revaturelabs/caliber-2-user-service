@@ -4,7 +4,7 @@ import com.revature.caliber.pojo.TrainerRole;
 
 public class TrainerDTO {
 
-	private Integer trainerId;
+	private int trainerId;
 	private String name;
 	private String title;
 	private String email;
@@ -13,7 +13,7 @@ public class TrainerDTO {
 	public TrainerDTO() {
 		
 	}
-	public TrainerDTO(Integer trainerId, String name, String title, String email, TrainerRole tier) {
+	public TrainerDTO(int trainerId, String name, String title, String email, TrainerRole tier) {
 		super();
 		this.trainerId = trainerId;
 		this.name = name;
@@ -22,10 +22,10 @@ public class TrainerDTO {
 		this.tier = tier;
 	}
 
-	public Integer getTrainerId() {
+	public int getTrainerId() {
 		return trainerId;
 	}
-	public void setTrainerId(Integer trainerId) {
+	public void setTrainerId(int trainerId) {
 		this.trainerId = trainerId;
 	}
 	public String getName() {

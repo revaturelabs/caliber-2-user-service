@@ -32,7 +32,7 @@ public class Trainee implements Serializable {
 	@Column(name = "TRAINEE_ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TRAINEE_ID_SEQUENCE")
 	@SequenceGenerator(name = "TRAINEE_ID_SEQUENCE", sequenceName = "TRAINEE_ID_SEQUENCE")
-	private Integer traineeId;
+	private int traineeId;
 
 	@Column(name = "RESOURCE_ID")
 	private String resourceId;
@@ -53,7 +53,7 @@ public class Trainee implements Serializable {
 
 	@NotNull
 	@Column(name = "BATCH_ID", nullable = false)
-	private Integer batchId;
+	private int batchId;
 
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
