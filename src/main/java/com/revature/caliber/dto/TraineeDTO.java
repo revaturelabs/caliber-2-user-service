@@ -312,25 +312,5 @@ public class TraineeDTO {
 				+ ", flagNoteAuthor=" + flagNoteAuthor + "]";
 	}
 	
-	public Trainee generateModel() {
-		Trainee ret = new Trainee(this.name, this.resourceId, this.email, this.batchId);
-		ret.setCollege(this.college);
-		ret.setDegree(this.degree);
-		ret.setFlagAuthor(this.flagNoteAuthor);
-		ret.setFlagNotes(this.flagNotes);
-		ret.setFlagTimestamp(this.flagNoteTimestamp);
-		ret.setMajor(this.major);
-		ret.setPhoneNumber(this.phoneNumber);
-		ret.setProfileUrl(this.profileUrl);
-		ret.setProjectCompletion(this.projectCompletion);
-		ret.setSkypeId(this.skypeId);
-		ret.setTechScreenerName(this.techScreenerName);
-		ret.setRecruiterName(this.recruiterName);
-		ret.setTechScreenScore(this.techScreenScore);
-		ret.setTraineeId(this.traineeId);
-		ret.setTrainingStatus(this.trainingStatus);
-		ret.setFlagStatus(this.flagStatus);
-		return ret;
-	}
 
 }
