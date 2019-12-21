@@ -24,7 +24,7 @@ public interface TraineeService {
 	 * @param batchId The id of the batch whose trainees will be retrieved
 	 * @return A list of the trainees from the given batch
 	 */
-	public List<Trainee> findAllByBatch(Integer batchId);
+	public List<Trainee> findAllByBatch(int batchId);
 	
 	/**
 	 * Updates the trainee in the database
@@ -43,13 +43,13 @@ public interface TraineeService {
 	 * @param traineeId The id of the trainee that is switching batches
 	 * @param batchId The id of the batch that the trainee is being switched to
 	 */
-	public void switchBatch(Integer traineeId, Integer batchId);
+	public void switchBatch(int traineeId, int batchId);
 
 	/**
 	 * Finds all the trainees associated with every batch
 	 * @param batchIds a list of all batchIds
 	 * @return the number of trainees in each batch in a integer double array
 	 */
-	public Integer[][] createArrayOfTraineeCounts(Integer[] batchIds);
+	public int[][] createArrayOfTraineeCounts(int[] batchIds);
 	
 }

@@ -57,7 +57,7 @@ public class TraineeController {
 	}
 	
 	@GetMapping("all/trainee/{id}")
-	public Trainee findTraineeById(@PathVariable("id") Integer id) {
+	public Trainee findTraineeById(@PathVariable("id") int id) {
 		log.trace("looking for trainee by id {}", id);
 		return traineeRepository.findOne(id);
 	}
@@ -70,8 +70,8 @@ public class TraineeController {
 	 */
 	@GetMapping(value="all/trainee", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Trainee>> findAllByBatch(
-			@RequestParam(required=true) Integer batch){
-		log.info("in all/trainee: Looking for batch: {}", batch);
+			@RequestParam(required=true) int batch){
+		log.trace("in all/trainee: Looking for batch: {}", batch);
 		List<Trainee> trainees = traineeService.findAllByBatch(batch);
 		return new ResponseEntity<>(trainees, HttpStatus.OK);
 	}
@@ -105,7 +105,7 @@ public class TraineeController {
 	 */
 	@DeleteMapping(value="all/trainee/delete/{id}")
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Void> deleteTrainee(@PathVariable Integer id){
+	public ResponseEntity<Void> deleteTrainee(@PathVariable int id){
 		traineeService.delete(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -116,8 +116,8 @@ public class TraineeController {
 	 */
 	@PostMapping(value="all/trainee/count", produces=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Integer[][]> getAllTraineesForAllBatches(@RequestBody Integer[] batchIds){
-		Integer[][] toReturn = traineeService.createArrayOfTraineeCounts(batchIds);
+	public ResponseEntity<int[][]> getAllTraineesForAllBatches(@RequestBody int[] batchIds){
+		int[][] toReturn = traineeService.createArrayOfTraineeCounts(batchIds);
 		return new ResponseEntity<>(toReturn, HttpStatus.OK);
 	}
 

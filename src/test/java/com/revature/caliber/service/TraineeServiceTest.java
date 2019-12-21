@@ -119,8 +119,8 @@ public class TraineeServiceTest {
 
 	@Test
 	public void testCreateArrayOfTraineeCounts() {
-		Integer[][] expected = new Integer[][] { { 1, 3 }, { 2, 2 }, { 3, 4 }, { 7, 1 } };
+		int[][] expected = new int[][] { { 1, 3 }, { 2, 2 }, { 3, 4 }, { 7, 1 } };
 		assertArrayEquals("Testing making the array of trainee counts",
-				trainerService.createArrayOfTraineeCounts(new Integer[] { 1, 2, 3, 7 }), expected);
+				trainerService.createArrayOfTraineeCounts(new int[] { 1, 2, 3, 7 }), expected);
 	}
 }
