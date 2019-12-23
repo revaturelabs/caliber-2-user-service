@@ -311,6 +311,5 @@ public class TraineeDTO {
 				+ ", flagStatus=" + flagStatus + ", flagNotes=" + flagNotes + ", flagNoteTimestamp=" + flagNoteTimestamp
 				+ ", flagNoteAuthor=" + flagNoteAuthor + "]";
 	}
-	
 
 }
